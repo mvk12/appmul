@@ -1,0 +1,33 @@
+{% extends "Layout/Home_Layout.html" %}
+
+{% block contenido %}
+<div class="row">
+  <div class="col s8">
+    <div class="login-image"></div>
+  </div>
+  <div class="col s4">
+    <div class="section">
+      <h3>Iniciar Sesión</h3>
+      <form action="{{ base_url() ~ controlador }}/Accesar" method="POST">
+        <input type="hidden" name="{{ token }}" value="{{ hash }}"/>
+        <label for="">Usuario</label>
+        <input type="text" name="Usuario" class="input-field trim" required/>
+        <label for="">Contraseña</label>
+        <input type="password" name="Pass" class="input-field" required/>
+        <br>
+        <input type="submit" value="Enviar" class="btn green right">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock contenido %}
+
+{% block scripts %}
+<script>
+  $(document).ready( function() {
+    $('.trim').focusout(function(event){
+      $(this).val( $(this).val().trim() )
+    })
+  });
+</script>
+{% endblock scripts %}
